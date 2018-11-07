@@ -1,10 +1,11 @@
 package board;
 
 import ai.AI;
+import ai.MiniMax;
 import ai.RandomAI;
 
 public class Game {
-    private int sleepTime = 0;
+    private int sleepTime = 3000;
 
     private int whiteWon = 0;
     private int blackWon = 0;
@@ -13,11 +14,11 @@ public class Game {
     public void play(boolean print) throws InterruptedException {
         Board board = new Board(3, 3, 3);
         AI player = new RandomAI();
-
+        AI player2 = new MiniMax();
         while (true) {
             if (makeMove(board, player, Board.SQUARE_PLAYER_WHITE, print)) break;
 
-            if (makeMove(board, player, Board.SQUARE_PLAYER_BLACK, print)) break;
+            if (makeMove(board, player2, Board.SQUARE_PLAYER_BLACK, print)) break;
         }
         if(board.getGameStatus().getGameStatus() == 10) {
             draw++;
@@ -29,9 +30,15 @@ public class Game {
     }
 
     private boolean makeMove(Board board, AI player, int squarePlayerWhite, boolean print) throws InterruptedException {
-        board.place(player.getMove(board, squarePlayerWhite));
-        if(print) board.printBoard();
-        Thread.sleep(sleepTime);
+        Move move = player.getMove(new SimpleBoard(board.getBoard()), squarePlayerWhite);
+        System.out.println(move.getPlayer());
+        move.setPlayer(squarePlayerWhite);
+        System.out.println(move.getPlayer());
+        board.place(move);
+        if(print) {
+            board.printBoard();
+            Thread.sleep(sleepTime);
+        }
         return board.getGameStatus().getGameStatus() != 0;
     }
 

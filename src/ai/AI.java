@@ -2,7 +2,8 @@ package ai;
 
 import board.Board;
 import board.Move;
+import board.SimpleBoard;
 
 public interface AI {
-    Move getMove(Board board, int player);
+    Move getMove(SimpleBoard board, int player);
 }

@@ -6,7 +6,7 @@ public class Board {
     public static int SQUARE_PLAYER_BLACK = -1;
     public static int SQUARE_EMPTY = 0;
     private Status gameStatus = new Status();
-    private final int WIN_COUNT;
+    public static int WIN_COUNT;
 
     public Status getGameStatus() {
         return gameStatus;
@@ -30,6 +30,7 @@ public class Board {
     }
 
     public void place(Move move) {
+
         if(board[move.getRow()][move.getColumn()] != Board.SQUARE_EMPTY) {
             throw new RuntimeException("square you are trying to use is not empty ROW:" + move.getRow()
                     + " COLUMN: " + move.getColumn() + " PLAYER: " + move.getPlayer());
