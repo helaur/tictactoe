@@ -16,7 +16,7 @@ public class MiniMax implements AI {
     public Move getMove(SimpleBoard simpleBoard, int player) {
         mySeed = player;
         board = simpleBoard.getBoard();
-        int[] result = minimax(2, mySeed);
+        int[] result = minimax(5, mySeed);
         return new Move( result[1], result[2], player);
     }
 
@@ -175,5 +175,6 @@ public class MiniMax implements AI {
         }
         return false;
     }
+    //source: http://www.ntu.edu.sg/home/ehchua/programming/java/javagame_tictactoe_ai.html
 
 }
