@@ -1,7 +1,9 @@
 package main;
 
 import ai.AI;
+import ai.Human;
 import ai.MiniMax;
+import ai.RandomAI;
 import board.Board;
 import board.Game;
 import board.Move;
@@ -57,9 +59,9 @@ public class Main {
 
 
 
-        Game game = new Game();
+        Game game = new Game(new Human(), new MiniMax());
         try {
-            game.playManyTimesNoPrint(5000);
+            game.play(true);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

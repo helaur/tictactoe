@@ -40,7 +40,7 @@ public class MiniMax implements AI {
                 // Try this move for the current "player"
                 board[move[0]][move[1]] = player;
                 if (player == mySeed) {  // mySeed (computer) is maximizing player
-                    currentScore = minimax(depth - 1, player* -1)[0];
+                    currentScore = minimax(depth - 1, player * -1)[0];
                     if (currentScore > bestScore) {
                         bestScore = currentScore;
                         bestRow = move[0];
